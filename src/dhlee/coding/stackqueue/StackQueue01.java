@@ -42,7 +42,7 @@ import java.util.Queue;
  *
  * 따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.
  */
-public class StackQueueTest01 {
+public class StackQueue01 {
     public int[] solution(int[] progresses, int[] speeds) {
         Queue<Integer> queue = new LinkedList<>();
         List<Integer> answerList = new ArrayList<>();
@@ -68,20 +68,5 @@ public class StackQueueTest01 {
         answerList.add(funcCount);
 
         return answerList.stream().mapToInt(answer -> answer.intValue()).toArray();
-    }
-
-    public static void main(String[] args) {
-        // int[] progresses = {93, 30, 55};
-        // int[] speeds = {1, 30, 5};
-
-        int[] progresses = {95, 90, 99, 99, 80, 99};
-        int[] speeds = {1, 1, 1, 1, 1, 1};
-
-        StackQueueTest01 test = new StackQueueTest01();
-        int[] answers = test.solution(progresses, speeds);
-
-        for (int answer : answers) {
-            System.out.println(answer);
-        }
     }
 }

@@ -39,7 +39,7 @@ import java.util.Arrays;
  *
  * 따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.
  */
-public class StackQueueTest01_Best {
+public class StackQueue01_Best {
     public int[] solution(int[] progresses, int[] speeds) {
         int[] dayOfend = new int[100];
         int day = -1;
@@ -59,7 +59,7 @@ public class StackQueueTest01_Best {
         int[] progresses = {95, 90, 99, 99, 80, 99};
         int[] speeds = {1, 1, 1, 1, 1, 1};
 
-        StackQueueTest01_Best test = new StackQueueTest01_Best();
+        StackQueue01_Best test = new StackQueue01_Best();
         int[] answers = test.solution(progresses, speeds);
 
         for (int answer : answers) {
