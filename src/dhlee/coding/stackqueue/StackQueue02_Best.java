@@ -1,8 +1,7 @@
 package dhlee.coding.stackqueue;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 스택/큐 - 프린터
@@ -40,40 +39,33 @@ import java.util.Queue;
  * 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
  *
  */
-public class StackQueue02 {
+public class StackQueue02_Best {
     public int solution(int[] priorities, int location) {
-        int answer = 0;
-
-        Queue<Integer> queue = new LinkedList<>();
-        Queue<Integer> queue_index = new LinkedList<>();
-
-        int i = 0;
+        List<Integer> list = new ArrayList<>();
         for (int priority : priorities) {
-            queue.add(priority);
-            queue_index.add(i);
-            i++;
+            list.add(priority);
         }
 
-        Integer cur = queue.poll();
-        Integer curIndex = queue_index.poll();
-
-        boolean flag = true;
-        while(flag) {
-            Integer finalCur = cur;
-            Optional<Integer> optional = queue.stream().filter(item -> item > finalCur).findFirst();
-            if (optional.isPresent()) {
-                queue.add(cur);
-                queue_index.add(curIndex);
+        int turn = 1;
+        while (!list.isEmpty()) {
+            final Integer j = list.get(0);
+            if (list.stream().anyMatch(v -> j < v)) {
+                list.add(list.remove(0));
             } else {
-                answer++;
-                if (location == curIndex) {
-                    break;
+                if (location == 0) {
+                    return turn;
                 }
+                list.remove(0);
+                turn++;
             }
-            cur = queue.poll();
-            curIndex = queue_index.poll();
+
+            if (location > 0) {
+                location--;
+            } else {
+                location = list.size() - 1;
+            }
         }
 
-        return answer;
+        throw new IllegalArgumentException();
     }
 }

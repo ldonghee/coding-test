@@ -6,11 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.stackqueue.StackQueue02;
+import dhlee.coding.stackqueue.StackQueue02_Best;
 
 @DisplayName("Stack Queue")
 public class StackQueue02_Test {
 
-    StackQueue02 test = new StackQueue02();
+    final StackQueue02 test = new StackQueue02();
+    final StackQueue02_Best testBest = new StackQueue02_Best();
 
     @Test
     void test_01() {
@@ -19,8 +21,10 @@ public class StackQueue02_Test {
         int answer = 1;
 
         int result = test.solution(priorities, location);
+        int result2 = testBest.solution(priorities, location);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -30,7 +34,9 @@ public class StackQueue02_Test {
         int answer = 5;
 
         int result = test.solution(priorities, location);
+        int result2 = testBest.solution(priorities, location);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 }
