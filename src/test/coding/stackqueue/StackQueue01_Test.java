@@ -11,8 +11,8 @@ import dhlee.coding.stackqueue.StackQueue01_Best;
 @DisplayName("Stack Queue")
 public class StackQueue01_Test {
 
-    StackQueue01 test = new StackQueue01();
-    StackQueue01_Best bestTest = new StackQueue01_Best();
+    final StackQueue01 test = new StackQueue01();
+    final StackQueue01_Best bestTest = new StackQueue01_Best();
 
     @Test
     void test_01() {
