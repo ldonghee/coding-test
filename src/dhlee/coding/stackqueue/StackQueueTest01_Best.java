@@ -1,9 +1,6 @@
 package dhlee.coding.stackqueue;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.Arrays;
 
 /**
  * 문제 설명
@@ -40,32 +37,17 @@ import java.util.Queue;
  *
  * 따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.
  */
-public class StackQueueTest01 {
+public class StackQueueTest01_Best {
     public int[] solution(int[] progresses, int[] speeds) {
-        Queue<Integer> queue = new LinkedList<>();
-        List<Integer> answerList = new ArrayList<>();
-
-        for (int i=0; i<progresses.length; i++) {
-            int day = (100 - progresses[i]) / speeds[i];
-            day = (100 - progresses[i]) % speeds[i] == 0 ? day : day + 1;
-            queue.add(day);
-        }
-
-        Integer func = queue.poll();
-        int funcCount = 1;
-        while (!queue.isEmpty()) {
-            int curFunc = queue.poll();
-            if (func >= curFunc) {
-                funcCount++;
-            } else {
-                answerList.add(funcCount);
-                funcCount = 1;
-                func = curFunc;
+        int[] dayOfend = new int[100];
+        int day = -1;
+        for(int i=0; i<progresses.length; i++) {
+            while(progresses[i] + (day*speeds[i]) < 100) {
+                day++;
             }
+            dayOfend[day]++;
         }
-        answerList.add(funcCount);
-
-        return answerList.stream().mapToInt(answer -> answer.intValue()).toArray();
+        return Arrays.stream(dayOfend).filter(i -> i!=0).toArray();
     }
 
     public static void main(String[] args) {
@@ -75,7 +57,7 @@ public class StackQueueTest01 {
         int[] progresses = {95, 90, 99, 99, 80, 99};
         int[] speeds = {1, 1, 1, 1, 1, 1};
 
-        StackQueueTest01 test = new StackQueueTest01();
+        StackQueueTest01_Best test = new StackQueueTest01_Best();
         int[] answers = test.solution(progresses, speeds);
 
         for (int answer : answers) {
