@@ -1,5 +1,10 @@
 package dhlee.coding.stackqueue;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * 스택/큐 - 주식 가격
  *
@@ -24,7 +29,26 @@ package dhlee.coding.stackqueue;
  */
 public class StackQueue04 {
     public int[] solution(int[] prices) {
-        int[] answer = {};
-        return answer;
+        Queue<Integer> queue = new LinkedList<>();
+        List<Integer> answers = new ArrayList<>();
+        for (int price : prices) {
+            queue.add(price);
+        }
+
+        int index = 1;
+        while (!queue.isEmpty()) {
+            int price = queue.poll();
+            int count = 0;
+            for (int i=index; i<prices.length; i++) {
+                count++;
+                if (price > prices[i]) {
+                    break;
+                }
+            }
+            answers.add(count);
+            index++;
+        }
+
+        return answers.stream().mapToInt(answer -> answer.intValue()).toArray();
     }
 }

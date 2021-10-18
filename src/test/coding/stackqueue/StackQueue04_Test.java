@@ -21,4 +21,24 @@ public class StackQueue04_Test {
 
         assertThat(result).isEqualTo(answer);
     }
+
+    @Test
+    void test_02() {
+        int[] price = {1, 1, 1, 1, 1};
+        int[] answer = {4, 3, 2, 1, 0};
+
+        int[] result = test.solution(price);
+
+        assertThat(result).isEqualTo(answer);
+    }
+
+    @Test
+    void test_03() {
+        int[] price = {5, 4, 3, 2, 1};
+        int[] answer = {1, 1, 1, 1, 0};
+
+        int[] result = test.solution(price);
+
+        assertThat(result).isEqualTo(answer);
+    }
 }
