@@ -1,5 +1,8 @@
 package dhlee.coding.stackqueue;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 스택/큐 - 다리를 지나는 트럭
  *
@@ -41,7 +44,34 @@ package dhlee.coding.stackqueue;
 public class StackQueue03 {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
         int answer = 0;
+        Queue<Integer> readyQueue = new LinkedList<>();
+        Queue<Integer> bridgeQueue = new LinkedList<>();
 
+        for (int truck_weight : truck_weights) {
+            readyQueue.add(truck_weight);
+        }
+        for (int i = 0 ; i < bridge_length ; i++) {
+            bridgeQueue.add(0);
+        }
+
+        int weightSum = 0;
+        while (!bridgeQueue.isEmpty()) {
+            weightSum -= bridgeQueue.poll();
+
+            if (!readyQueue.isEmpty()) {
+                if ((weightSum + readyQueue.peek()) <= weight) {
+                    bridgeQueue.add(readyQueue.peek());
+                    weightSum += readyQueue.peek();
+                    readyQueue.poll();
+                } else {
+                    bridgeQueue.add(0);
+                }
+            } else {
+                answer += bridge_length;
+                break;
+            }
+            answer++;
+        }
 
         return answer;
     }
