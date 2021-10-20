@@ -6,10 +6,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.hash.Hash01;
+import dhlee.coding.hash.Hash01_Best;
 
 @DisplayName("Hash")
 public class Hash01_Test {
     final Hash01 test = new Hash01();
+    final Hash01_Best bestTest = new Hash01_Best();
 
     @Test
     void test_01() {
@@ -18,8 +20,10 @@ public class Hash01_Test {
         String answer = "leo";
 
         String result = test.solution(participant, completion);
+        String result2 = bestTest.solution(participant, completion);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -29,8 +33,10 @@ public class Hash01_Test {
         String answer = "vinko";
 
         String result = test.solution(participant, completion);
+        String result2 = bestTest.solution(participant, completion);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -40,7 +46,9 @@ public class Hash01_Test {
         String answer = "mislav";
 
         String result = test.solution(participant, completion);
+        String result2 = bestTest.solution(participant, completion);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 }
