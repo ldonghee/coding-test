@@ -1,5 +1,7 @@
 package dhlee.coding.hash;
 
+import java.util.HashMap;
+
 /**
  * 해시 - 완주하지 못한 선수
  *
@@ -34,6 +36,27 @@ package dhlee.coding.hash;
 public class Hash01 {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
+
+        HashMap<String, Integer> participantMap = new HashMap<>();
+
+        for (String person : participant) {
+            int cnt = 1;
+            if (participantMap.containsKey(person)) {
+                cnt = participantMap.get(person) + 1;
+            }
+            participantMap.put(person, cnt);
+        }
+
+        for (String person : completion) {
+            int cnt = participantMap.get(person);
+            participantMap.put(person, cnt - 1);
+        }
+
+        for (String key : participantMap.keySet()) {
+            if (participantMap.get(key) >= 1) {
+                answer = key;
+            }
+        }
         return answer;
     }
 }
