@@ -1,5 +1,9 @@
 package dhlee.coding.hash;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 /**
  * 해시 - 위장
  *
@@ -48,7 +52,26 @@ package dhlee.coding.hash;
  */
 public class Hash03 {
     public int solution(String[][] clothes) {
-        int answer = 0;
-        return answer;
+        int answer = 1;
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String[] s : clothes) {
+            map.put(s[1], map.containsKey(s[1]) ? map.get(s[1]) + 1 : 1);
+        }
+
+        /**
+         * 예를 들어 상의의 수를 A 하의의 수를 B라고 하면
+         * 상의와 하의의 조합하는 경우의 수는 A * B
+         * 상의만 선택하고 하의는 선택하지 않을 수도 있고, 하의만 선택하고 상의를 선택하지 않을 수도 있음
+         * (A + 1) * (B + 1) 의 경우의 수가 나옴
+         * 아무것도 입지 않는 수가 있을 수 있기 때문에 최종적으로 -1을 해주면
+         * (A + 1) * (B + 1) - 1 공식을 얻을 수가 있음
+         *
+         */
+        Iterator<Integer> it = map.values().iterator();
+        while(it.hasNext()) {
+            answer *= it.next().intValue()+1;
+        }
+        return answer - 1;
     }
 }

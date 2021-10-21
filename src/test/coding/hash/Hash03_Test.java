@@ -30,4 +30,14 @@ public class Hash03_Test {
 
         assertThat(result).isEqualTo(answer);
     }
+
+    @Test
+    void test_03() {
+        String[][] clothes = {{"crowmask", "face"}, {"bluesunglasses", "face"}, {"yellowhat", "headgear"}, {"green_turban", "headgear"}};
+        int answer = 8;
+
+        int result = test.solution(clothes);
+
+        assertThat(result).isEqualTo(answer);
+    }
 }
