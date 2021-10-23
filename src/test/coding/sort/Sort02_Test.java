@@ -21,4 +21,27 @@ public class Sort02_Test {
 
         assertThat(result).isEqualTo(answers);
     }
+
+    @Test
+    void test_02() {
+        int[] numbers = {100, 10, 10};
+        String answers = "1010100";
+
+        String result = test.solution(numbers);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    @DisplayName("모두 0인 경우 테스트")
+    void test_03() {
+        int[] numbers = {0, 0, 0, 0, 0};
+        String answers = "0";
+
+        String result = test.solution(numbers);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+
 }

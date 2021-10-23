@@ -29,6 +29,20 @@ import java.util.List;
 public class Sort02 {
     public String solution(int[] numbers) {
         String answer = "";
+        List<String> strNumbers = new ArrayList<>();
+        for (int number : numbers) {
+            strNumbers.add(String.valueOf(number));
+        }
+
+        Collections.sort(strNumbers, (o1, o2) -> (o2 + o1).compareTo(o1 + o2));
+
+        if ("0".equals(strNumbers.get(0))) {
+            return "0";
+        }
+
+        for (String number : strNumbers) {
+            answer += number;
+        }
         return answer;
     }
 }
