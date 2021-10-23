@@ -6,11 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.sort.Sort01;
+import dhlee.coding.sort.Sort01_Best;
 
 @DisplayName("Sort")
 public class Sort01_Test {
 
     final private Sort01 test = new Sort01();
+    final private Sort01_Best bestTest = new Sort01_Best();
 
     @Test
     void test_01() {
@@ -19,7 +21,9 @@ public class Sort01_Test {
         int[] answers = {5, 6, 3};
 
         int[] result = test.solution(array, commands);
+        int[] result2 = bestTest.solution(array, commands);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 }
