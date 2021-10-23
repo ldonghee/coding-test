@@ -1,5 +1,13 @@
 package dhlee.coding.hash;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * 해시 - 베스트앨범
  *
@@ -39,7 +47,43 @@ package dhlee.coding.hash;
  */
 public class Hash04 {
     public int[] solution(String[] genres, int[] plays) {
-        int[] answer = {};
-        return answer;
+        List<Integer> answers = new ArrayList<>();
+
+        Map<String, Object> album = new HashMap<>();
+        Map<String, Integer> albumSum = new HashMap<>();
+
+        for (int i=0; i<genres.length; i++) {
+            Map<Integer, Integer> best = new TreeMap<>(Collections.reverseOrder());
+            String genre = genres[i];
+            int play = plays[i];
+
+            if (album.containsKey(genre)) {
+                best = (Map<Integer, Integer>)album.get(genre);
+            }
+
+            if (!best.containsKey(play) || (best.containsKey(play) && i < best.get(play))) {
+                best.put(play, i);
+                album.put(genre, best);
+            }
+
+            albumSum.put(genre, albumSum.getOrDefault(genre, 0) + play);
+        }
+
+        List<String> sortedKeys = new ArrayList(albumSum.keySet());
+        sortedKeys.sort((o1, o2) -> albumSum.get(o2) - albumSum.get(o1));
+
+        for (String key : sortedKeys) {
+            Map<Integer, Integer> best = (Map<Integer, Integer>) album.get(key);
+
+            Iterator<Integer> bestIter = best.keySet().iterator();
+            int count = 0;
+            while( bestIter.hasNext() && count < 2) {
+                Integer value = best.get(bestIter.next());
+                answers.add(value);
+                count++;
+            }
+        }
+
+        return answers.stream().mapToInt(item -> item.intValue()).toArray();
     }
 }
