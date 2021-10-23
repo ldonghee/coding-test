@@ -6,10 +6,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.hash.Hash04;
+import dhlee.coding.hash.Hash04_Best;
 
 @DisplayName("Hash")
 public class Hash04_Test {
     final Hash04 test = new Hash04();
+    final Hash04_Best bestTest = new Hash04_Best();
 
     @Test
     void test_01() {
@@ -18,8 +20,10 @@ public class Hash04_Test {
         int[] answer = {4, 1, 3, 0};
 
         int[] result = test.solution(genres, plays);
+        int[] result2 = bestTest.solution(genres, plays);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -30,8 +34,10 @@ public class Hash04_Test {
         int[] answer = {2, 1, 0, 3};
 
         int[] result = test.solution(genres, plays);
+        int[] result2 = bestTest.solution(genres, plays);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -42,20 +48,23 @@ public class Hash04_Test {
         int[] answer = {5, 2, 4, 3, 6};
 
         int[] result = test.solution(genres, plays);
+        int[] result2 = bestTest.solution(genres, plays);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
 
     @Test
-    @DisplayName("장르가 하나인 경우, 하나의 결과만 출력 테스트")
     void test_04() {
-        String[] genres = {"classic", "pop", "classic", "pop", "classic", "pop"};
-        int[] plays = {300, 200, 100, 100, 100, 100};
-        int[] answer = {0, 2, 1, 3};
+        String[] genres = {"classic", "pop", "classic", "pop", "classic", "classic"};
+        int[] plays = {400, 600, 150, 600, 500, 500};
+        int[] answer = {4, 5, 1, 3};
 
         int[] result = test.solution(genres, plays);
+        int[] result2 = bestTest.solution(genres, plays);
 
-        assertThat(result).isEqualTo(answer);
+        // assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 }
