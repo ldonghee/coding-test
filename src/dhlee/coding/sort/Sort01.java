@@ -1,5 +1,9 @@
 package dhlee.coding.sort;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * 정렬 - K번째수
  *
@@ -32,7 +36,18 @@ package dhlee.coding.sort;
  */
 public class Sort01 {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = {};
-        return answer;
+        List<Integer> answers = new ArrayList<>();
+
+        for (int i=0; i<commands.length; i++) {
+            int[] indexes = commands[i];
+            List<Integer> subList = new ArrayList<>();
+            for (int j=indexes[0]-1; j<indexes[1]; j++) {
+                subList.add(array[j]);
+            }
+            Collections.sort(subList);
+            answers.add(subList.get(indexes[2] - 1));
+        }
+
+        return answers.stream().mapToInt(i -> i.intValue()).toArray();
     }
 }
