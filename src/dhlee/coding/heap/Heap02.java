@@ -1,5 +1,9 @@
 package dhlee.coding.heap;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
 /**
  * 힙(Heap) - 디스크 컨트롤러
  *
@@ -42,8 +46,45 @@ package dhlee.coding.heap;
  *
  */
 public class Heap02 {
+    class Job {
+        private int requestTime;
+        private int workingTime;
+
+        public Job(int requestTime, int workingTime) {
+            this.requestTime = requestTime;
+            this.workingTime = workingTime;
+        }
+    }
+
     public int solution(int[][] jobs) {
         int answer = 0;
-        return answer;
+        LinkedList<Job> waiting = new LinkedList<>();
+        PriorityQueue<Job> workingQueue = new PriorityQueue<>((o1, o2) -> o1.workingTime - o2.workingTime);
+
+        for (int[] job : jobs) {
+            waiting.add(new Job(job[0], job[1]));
+        }
+
+        Collections.sort(waiting, (o1, o2) -> o1.requestTime - o2.requestTime);
+
+        int count = 0;
+        int time = waiting.peek().requestTime;
+
+        while(count < jobs.length) {
+            while (!waiting.isEmpty() && waiting.peek().requestTime <= time) {
+                workingQueue.add(waiting.poll());
+            }
+
+            if (!workingQueue.isEmpty()) {
+                Job job = workingQueue.poll();
+                time += job.workingTime;
+                answer += time - job.requestTime;
+                count++;
+            } else {
+                time++;
+            }
+        }
+
+        return answer / count;
     }
 }

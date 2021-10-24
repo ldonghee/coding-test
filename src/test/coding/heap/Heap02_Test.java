@@ -21,4 +21,15 @@ public class Heap02_Test {
 
         assertThat(result).isEqualTo(answer);
     }
+
+    @Test
+    @DisplayName("요청 시간과 소요시간이 동일한 경우 테스트 ")
+    void test_02() {
+        int[][] jobs = {{3, 3}, {3, 3}, {3, 3}};
+        int answer = 6;
+
+        int result = test.solution(jobs);
+
+        assertThat(result).isEqualTo(answer);
+    }
 }
