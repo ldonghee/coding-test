@@ -1,5 +1,8 @@
 package dhlee.coding.heap;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * 힙(Heap) - 더 맵게
  *
@@ -38,6 +41,24 @@ package dhlee.coding.heap;
 public class Heap01 {
     public int solution(int[] scoville, int K) {
         int answer = 0;
+
+        Queue<Integer> queue = new PriorityQueue<>();
+        for (int value : scoville) {
+            queue.add(value);
+        }
+
+        while (K > queue.peek()) {
+            if (queue.size() == 1) {
+                answer = -1;
+                break;
+            }
+            int first = queue.poll();
+            int second = queue.poll();
+            int newValue = first + (second * 2);
+            queue.add(newValue);
+            answer++;
+        }
+
         return answer;
     }
 }
