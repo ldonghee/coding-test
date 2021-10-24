@@ -6,11 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.heap.Heap02;
+import dhlee.coding.heap.Heap02_Best;
 
 @DisplayName("힙(Heap)")
 public class Heap02_Test {
 
     final private Heap02 test = new Heap02();
+    final private Heap02_Best bestTest = new Heap02_Best();
 
     @Test
     void test_01() {
@@ -18,8 +20,10 @@ public class Heap02_Test {
         int answer = 9;
 
         int result = test.solution(jobs);
+        int result2 = bestTest.solution(jobs);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 
     @Test
@@ -29,7 +33,9 @@ public class Heap02_Test {
         int answer = 6;
 
         int result = test.solution(jobs);
+        int result2 = bestTest.solution(jobs);
 
         assertThat(result).isEqualTo(answer);
+        assertThat(result2).isEqualTo(answer);
     }
 }
