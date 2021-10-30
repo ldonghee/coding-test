@@ -6,11 +6,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dhlee.coding.sort.Sort03;
+import dhlee.coding.sort.Sort03_Best;
 
 @DisplayName("Sort")
 public class Sort03_Test {
 
     final private Sort03 test = new Sort03();
+    final private Sort03_Best bestTest = new Sort03_Best();
 
     @Test
     void test_01() {
@@ -18,8 +20,10 @@ public class Sort03_Test {
         int answers = 3;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -28,8 +32,10 @@ public class Sort03_Test {
         int answers = 0;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -38,8 +44,10 @@ public class Sort03_Test {
         int answers = 1;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -48,8 +56,10 @@ public class Sort03_Test {
         int answers = 4;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -58,8 +68,10 @@ public class Sort03_Test {
         int answers = 3;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -68,8 +80,10 @@ public class Sort03_Test {
         int answers = 4;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -78,8 +92,10 @@ public class Sort03_Test {
         int answers = 3;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -88,8 +104,10 @@ public class Sort03_Test {
         int answers = 3;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -98,8 +116,10 @@ public class Sort03_Test {
         int answers = 0;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 
     @Test
@@ -108,7 +128,9 @@ public class Sort03_Test {
         int answers = 0;
 
         int result = test.solution(citations);
+        int result2 = bestTest.solution(citations);
 
         assertThat(result).isEqualTo(answers);
+        assertThat(result2).isEqualTo(answers);
     }
 }
