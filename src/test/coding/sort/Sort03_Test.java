@@ -21,4 +21,94 @@ public class Sort03_Test {
 
         assertThat(result).isEqualTo(answers);
     }
+
+    @Test
+    void test_02() {
+        int[] citations = {0, 0, 0, 0, 0};
+        int answers = 0;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_03() {
+        int[] citations = {0, 0, 0, 0, 1};
+        int answers = 1;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_04() {
+        int[] citations = {9, 9, 9, 12};
+        int answers = 4;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_05() {
+        int[] citations = {9, 7, 6, 2, 1};
+        int answers = 3;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_06() {
+        int[] citations = {10, 8, 5, 4, 3};
+        int answers = 4;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_07() {
+        int[] citations = {25, 8, 5, 3, 3};
+        int answers = 3;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_08() {
+        int[] citations = {1, 1, 5, 7, 6};
+        int answers = 3;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_09() {
+        int[] citations = {0};
+        int answers = 0;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
+
+    @Test
+    void test_10() {
+        int[] citations = {0, 0};
+        int answers = 0;
+
+        int result = test.solution(citations);
+
+        assertThat(result).isEqualTo(answers);
+    }
 }
