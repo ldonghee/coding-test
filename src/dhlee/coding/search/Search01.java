@@ -1,5 +1,10 @@
 package dhlee.coding.search;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 완전탐색 - 모의고사
  *
@@ -37,7 +42,38 @@ package dhlee.coding.search;
  */
 public class Search01 {
     public int[] solution(int[] answers) {
-        int[] answer = {};
-        return answer;
+        List<Integer> result = new ArrayList<>();
+
+        int[] a = {1, 2, 3, 4, 5};
+        int[] b = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] c = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+        Map<Integer, Integer> counts = new HashMap<>();
+        counts.put(1, 0);
+        counts.put(2, 0);
+        counts.put(3, 0);
+
+        for (int i=0; i<answers.length; i++) {
+            int answer = answers[i];
+
+            if (answer == a[i % a.length]) counts.put(1, counts.get(1) + 1);
+            if (answer == b[i % b.length]) counts.put(2, counts.get(2) + 1);
+            if (answer == c[i % c.length]) counts.put(3, counts.get(3) + 1);
+        }
+
+        int max = 0;
+        for (Integer key : counts.keySet()) {
+            if (max < counts.get(key)) {
+                max = counts.get(key);
+            }
+        }
+
+        for (Integer key : counts.keySet()) {
+            if (max == counts.get(key)) {
+                result.add(key);
+            }
+        }
+
+        return result.stream().mapToInt(item -> item.intValue()).toArray();
     }
 }
