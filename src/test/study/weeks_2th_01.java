@@ -21,17 +21,27 @@ public class weeks_2th_01 {
             String[] stringArray = s.substring(2, s.length() - 2).split("},\\{");
             Set<Integer> result = new LinkedHashSet<>();
 
+
+            // inputMap
+            // 3: 1,2,3
+            // 2: 2,1
+            // 4: 1,2,4,3
+            // 1: 2
             Map<Integer, int[]> inputMap = new HashMap<>();
             for (String a : stringArray) {
                 int[] temp = Stream.of(a.split(",")).mapToInt(Integer::parseInt).toArray();
                 inputMap.put(temp.length, temp);
             }
 
+            // key 값 1 부터 사이즈 만큼 순회
             for (int i=1; i<=inputMap.keySet().size(); i++) {
                 int[] temp = inputMap.get(i);
+                System.out.print(i + " : ");
                 for (int t : temp) {
+                    System.out.print(t);
                     result.add(t);
                 }
+                System.out.println();
             }
 
             return result.stream().mapToInt(i->i).toArray();
