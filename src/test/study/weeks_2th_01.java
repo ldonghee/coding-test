@@ -36,12 +36,9 @@ public class weeks_2th_01 {
             // key 값 1 부터 사이즈 만큼 순회
             for (int i=1; i<=inputMap.keySet().size(); i++) {
                 int[] temp = inputMap.get(i);
-                System.out.print(i + " : ");
                 for (int t : temp) {
-                    System.out.print(t);
                     result.add(t);
                 }
-                System.out.println();
             }
 
             return result.stream().mapToInt(i->i).toArray();
