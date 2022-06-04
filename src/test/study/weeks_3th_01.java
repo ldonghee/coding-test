@@ -26,15 +26,15 @@ public class weeks_3th_01 {
 
         void permutations(List<List<Integer>> result, int[] nums, int depth, int n) {
             if (depth == n) {
-                //				System.out.println("-------- ADD : " + nums[0] + nums[1] + nums[2]);
+                System.out.println("-------- ADD : " + nums[0] + nums[1] + nums[2]);
                 result.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
                 return;
             }
 
             for (int i=depth; i<n; i++) {
-                //				System.out.println("permutations : " + nums[0] + nums[1] + nums[2]);
+                System.out.println("permutations : " + nums[0] + nums[1] + nums[2]);
                 swap(nums, i, depth);
-                //				System.out.println("depth: " + depth + ", i : " + i + ", nums : " + nums[0] + nums[1] + nums[2]);
+                System.out.println("depth: " + depth + ", i : " + i + ", nums : " + nums[0] + nums[1] + nums[2]);
                 permutations(result, nums, depth + 1, n);
                 swap(nums, i, depth);
             }
