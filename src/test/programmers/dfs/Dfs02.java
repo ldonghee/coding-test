@@ -77,4 +77,56 @@ public class Dfs02 {
         int actual = solution.solution(maps);
         assertThat(actual).isEqualTo(expect);
     }
+
+    @Test
+    public void test03() {
+        /**
+         * 1 0 0
+         * 1 0 0
+         * 1 1 1
+         */
+        int[][] maps = {{1, 0, 0},{1, 1, 0},{0, 1, 1}};
+
+        int expect = 5;
+        int actual = solution.solution(maps);
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @Test
+    public void test04() {
+        /**
+         * 1
+         */
+        int[][] maps = {{1}};
+
+        int expect = 1;
+        int actual = solution.solution(maps);
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @Test
+    public void test05() {
+        /**
+         * 1 1 1 1 1
+         * 0 0 0 0 1
+         */
+        int[][] maps = {{1, 1, 1, 1, 1}, {0, 0 ,0 ,0, 1}};
+
+        int expect = 6;
+        int actual = solution.solution(maps);
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @Test
+    public void test06() {
+        /**
+         * 1 0 1 1 1
+         * 0 0 0 0 1
+         */
+        int[][] maps = {{1, 0, 1, 1, 1}, {0, 0 ,0 ,0, 1}};
+
+        int expect = -1;
+        int actual = solution.solution(maps);
+        assertThat(actual).isEqualTo(expect);
+    }
 }
