@@ -77,4 +77,24 @@ public class Greedy03 {
         String actual = solution.solution(number, k);
         assertThat(actual).isEqualTo(expect);
     }
+
+    @Test
+    public void test05() {
+        String number = "52134";
+        int k = 2;
+
+        String expect = "534";
+        String actual = solution.solution(number, k);
+        assertThat(actual).isEqualTo(expect);
+    }
+
+    @Test
+    public void test06() {
+        String number = "52134";
+        int k = 3;
+
+        String expect = "54";
+        String actual = solution.solution(number, k);
+        assertThat(actual).isEqualTo(expect);
+    }
 }
