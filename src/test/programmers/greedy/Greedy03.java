@@ -19,7 +19,10 @@ public class Greedy03 {
             for (int i=0; i<number.length(); i++) {
                 char c = number.charAt(i);
 
-                while(!stack.isEmpty() && stack.peek() < c && k>0) {
+                // k개 수를 제거한다는 것에 중점
+                // 스택에 마지막에 넣은 값이 현재 넣으려는 숫자와 비교했을때 더 작다면 stack에서 꺼냄
+                // 꺼내주는 횟수가 k번을 넘지 않을 때까지만 pop()한다
+                while(!stack.isEmpty() && stack.peek() < c && k > 0) {
                     stack.pop();
                     k--;
                 }
