@@ -2,6 +2,9 @@ package test.programmers.exhaustiveSearch;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,34 +13,36 @@ import org.junit.jupiter.api.Test;
  */
 public class exhaustiveSearch07 {
 	public class Solution {
+		private String[] arr;
+		private List<String> list;
+
 		public int solution(String word) {
 			int answer = 0;
-			char[] vowel = {'A', 'E', 'I', 'O', 'U'};
+			list = new ArrayList<>();
+			arr = new String[]{"A", "E", "I", "O", "U"};
 
-			String fullWord = word;
-			while (fullWord.length() < 5) {
-				fullWord += "A";
-			}
+			recursive(word, "", 0);
 
-			char[] dic = {'A', 'A', 'A', 'A', 'A'};
-			int count = 0;
-			boolean flag = false;
-			for (int i=4; i>=0; i--) {
-				for (int j=0; j<5; j++) {
-					count++;
-					dic[i] = vowel[j];
-					if (fullWord.equals(new String(dic))) {
-						flag = true;
-						break;
-					}
+			for (int i=0; i<list.size(); i++) {
+				if (list.get(i).equals(word)) {
+					answer = i;
+					break;
 				}
-				dic[i] = 'A';
-				if (flag) break;
 			}
-
-
 
 			return answer;
+		}
+
+		public void recursive(String word, String str, int depth) {
+			list.add(str);
+
+			if (depth == 5) {
+				return;
+			}
+
+			for (int i=0; i<arr.length; i++) {
+				recursive(word, str + arr[i], depth + 1);
+			}
 		}
 	}
 
