@@ -33,7 +33,7 @@ public class Dp02 {
 				if (i > index + 1) {
 					break;
 				}
-				dfs(depth + 1, triangle, sum, index);
+				dfs(depth + 1, triangle, sum, i);
 			}
 		}
 	}
