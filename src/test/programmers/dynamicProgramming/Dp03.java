@@ -15,16 +15,44 @@ public class Dp03 {
 
     class Solution {
 
+
+        public int solution(int m, int n, int[][] puddles) {
+            int [][]dp = new int[n][m];
+
+            for (int[] i : puddles) {
+                dp[i[1] - 1][i[0] - 1] = -1;
+            }
+
+            dp[0][0] = 1;
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (dp[i][j] == 0) {
+                        if (i != 0 && dp[i - 1][j] != -1) {
+                            dp[i][j] += dp[i - 1][j];
+                        }
+
+                        if (j != 0 && dp[i][j - 1] != -1) {
+                            dp[i][j] += dp[i][j - 1];
+                        }
+
+                        dp[i][j] %= 1000000007;
+                    }
+                }
+            }
+            return dp[n - 1][m - 1];
+        }
+
+
         List<Integer> answers = new ArrayList<>();
         int shortestPath = 1000000007;
 
-        public int solution(int m, int n, int[][] puddles) {
+        public int solution2(int m, int n, int[][] puddles) {
             dfs(0, m, n, puddles, 0, 0);
 
             int answer = (int) answers.stream().filter(a -> a == shortestPath).count();
 
             if (answer > 1000000007)
-            	return answer % 1000000007;
+                return answer % 1000000007;
             return answer;
         }
 
@@ -38,10 +66,10 @@ public class Dp03 {
             }
 
             for (int i=0; i<puddles.length; i++) {
-				if (puddles[i][0] == posX + 1 && puddles[i][1] == posY + 1) {
-					return;
-				}
-			}
+                if (puddles[i][0] == posX + 1 && puddles[i][1] == posY + 1) {
+                    return;
+                }
+            }
 
             if (posX < m && posY < n) {
                 dfs(depth + 1, m, n, puddles, posX + 1, posY);
