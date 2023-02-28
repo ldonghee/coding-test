@@ -3,8 +3,6 @@ package test.neetcode.stack;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Stack;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
 
 import org.junit.jupiter.api.Test;
 
