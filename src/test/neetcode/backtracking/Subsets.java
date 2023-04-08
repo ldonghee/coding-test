@@ -48,8 +48,8 @@ public class Subsets {
 								   Lists.newArrayList(3),
 								   Lists.newArrayList(1, 3), Lists.newArrayList(2, 3), Lists.newArrayList(1, 2, 3));
 		List<List<Integer>> actual = solution.subsets(nums);
-		assertThat(actual.containsAll(expect));
-		assertThat(expect.containsAll(actual));
+		assertThat(actual.containsAll(expect)).isTrue();
+		assertThat(expect.containsAll(actual)).isTrue();
 	}
 
 	@Test
