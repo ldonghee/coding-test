@@ -1,4 +1,4 @@
-package dhlee.coding.exam;
+package test.exam.kakao;
 
 import java.util.HashSet;
 import java.util.Set;

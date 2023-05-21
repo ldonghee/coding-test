@@ -1,4 +1,4 @@
-package dhlee.coding.exam;
+package test.exam.kakao;
 
 // KKO_MB
 public class Exam03 {

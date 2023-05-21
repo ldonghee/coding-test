@@ -1,6 +1,6 @@
 package test.coding.exam;
 
-import dhlee.coding.exam.Exam01;
+import test.exam.kakao.Exam01;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
