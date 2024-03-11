@@ -25,4 +25,14 @@ public class GrayCode {
 
 		assertThat(expect).isEqualTo(actual);
 	}
+
+	@Test
+	public void test02() {
+		int n = 1;
+
+		List<Integer> expect = Arrays.asList(0, 1);
+		List<Integer> actual = grayCode(n);
+
+		assertThat(expect).isEqualTo(actual);
+	}
 }
