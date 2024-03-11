@@ -75,7 +75,7 @@ public class PartitionList {
 	@Test
 	public void test01() {
 		ListNode head = new ListNode(1, new ListNode(4, new ListNode(3, new ListNode(2, new ListNode(5, new ListNode(2, null))))));
-		int x = 2;
+		int x = 3;
 
 		ListNode expect = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(4, new ListNode(3, new ListNode(5, null))))));
 		ListNode actual = solution.partition(head, x);
