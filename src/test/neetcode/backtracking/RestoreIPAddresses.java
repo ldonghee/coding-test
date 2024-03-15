@@ -2,6 +2,7 @@ package test.neetcode.backtracking;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,33 @@ import org.junit.jupiter.api.Test;
  */
 public class RestoreIPAddresses {
 	public List<String> restoreIpAddresses(String s) {
-		return Arrays.asList("255.255.11.135","255.255.111.35");
+		List<String> result = new ArrayList<>();
+		backtracking(result, s, 0, "", 0);
+		return result;
+	}
+
+	private void backtracking(List<String> answers, String s, int index, String curStr, int count) {
+		if (count > 4) {
+			return;
+		}
+
+//		System.out.println(curStr);
+
+		if (index == s.length() && count == 4) {
+			answers.add(curStr);
+		}
+
+		for (int i=1; i<4; i++) {
+			if (index + i > s.length()) {
+				break;
+			}
+
+			String ip = s.substring(index, index + i);
+			if ((ip.startsWith("0") && ip.length() > 1) || Integer.parseInt(ip) > 255) {
+				continue;
+			}
+			backtracking(answers, s, index + i, curStr + ip + (count == 3 ? "" : "."), count + 1);
+		}
 	}
 
 	@Test
