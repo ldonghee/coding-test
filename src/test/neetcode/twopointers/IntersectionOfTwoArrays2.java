@@ -11,6 +11,10 @@ import java.util.Objects;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * 350. Intersection of Two Arrays II
+ * https://leetcode.com/problems/intersection-of-two-arrays-ii/
+ */
 public class IntersectionOfTwoArrays2 {
 	public int[] intersect(int[] nums1, int[] nums2) {
 		Map<Integer, Integer> countMap = new HashMap<>();
