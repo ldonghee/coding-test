@@ -14,7 +14,27 @@ import org.junit.jupiter.api.Test;
  */
 public class ValidParentheses {
 	public boolean isValid(String s) {
-		return false;
+		Map<Character, Character> map = new HashMap<Character, Character>() {
+			{
+				put('{', '}');
+				put('(', ')');
+				put('[', ']');
+				put('}', '{');
+				put(']', '[');
+				put(')', '(');
+			}
+		};
+		Stack<Character> stack = new Stack<>();
+
+		for (Character c : s.toCharArray()) {
+			if (c == '(' || c == '{' || c == '[') {
+				stack.push(c);
+			} else if (stack.isEmpty() || stack.pop() != map.get(c)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 
