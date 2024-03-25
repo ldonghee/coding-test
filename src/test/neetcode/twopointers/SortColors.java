@@ -1,0 +1,33 @@
+package test.neetcode.twopointers;
+
+import static org.assertj.core.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * 75. Sort Colors
+ * https://leetcode.com/problems/sort-colors/
+ */
+public class SortColors {
+	public void sortColors(int[] nums) {
+
+	}
+
+	@Test
+	public void test() {
+		int[] nums = {2, 0, 2, 1, 1, 0};
+		int[] expect = {0, 0, 1, 1, 2, 2};
+		sortColors(nums);
+
+		assertThat(expect).isEqualTo(nums);
+	}
+
+	@Test
+	public void test2() {
+		int[] nums = {2, 0, 1};
+		int[] expect = {0, 1, 2};
+		sortColors(nums);
+
+		assertThat(expect).isEqualTo(nums);
+	}
+}
