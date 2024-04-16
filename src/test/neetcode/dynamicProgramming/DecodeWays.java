@@ -36,27 +36,27 @@ public class DecodeWays {
 		// 방문 관리 리스트 visited[s.length]
 		//
 
-		dfs(s, 0, s.charAt(0), new StringBuilder());
+//		dfs(s, 0, s.charAt(0), new StringBuilder());
 
 		return 0;
 	}
 
-	void dfs(String s, int index, char prev, StringBuilder builder) {
-		if (index == s.length()) {
-			String.valueOf((char)(s.charAt(0) + 17))
-
-			answers.add(builder.toString());
-			return;
-		}
-
-		if ((prev + ((int) s.charAt(index)) <= 26) {
-			int ch = ((int) prev) + ((int) s.charAt(index)) + 65;
-			String tempResult = String.valueOf(ch);
-			builder.append(tempResult);
-		}
-
-		dfs(s, index+1, s.charAt(index), builder);
-	}
+//	void dfs(String s, int index, char prev, StringBuilder builder) {
+//		if (index == s.length()) {
+////			String.valueOf((char)(s.charAt(0) + 17))
+//
+//			answers.add(builder.toString());
+//			return;
+//		}
+//
+//		if ((prev + ((int) s.charAt(index)) <= 26) {
+//			int ch = ((int) prev) + ((int) s.charAt(index)) + 65;
+//			String tempResult = String.valueOf(ch);
+//			builder.append(tempResult);
+//		}
+//
+//		dfs(s, index+1, s.charAt(index), builder);
+//	}
 
 	@Test
 	public void test() {
