@@ -17,31 +17,24 @@ public class CombinationSum2 {
 
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
-		// 1. 시작점으로 모든 요소 접근
-		for (int i=0; i<candidates.length; i++) {
-			dfs(new ArrayList<>(), 0, i, candidates, target);
-		}
-		// 2. target 값보다 작다면
+		dfs(new ArrayList<>(), 0, 0, candidates, target);
 
 		return combinations;
 	}
 
 	void dfs (List<Integer> combination, int sum, int index, int[] candidates, int target) {
-		if (index > candidates.length-1) {
+		if (sum > target) {
 			return;
 		}
-
-		int newSum = sum + candidates[index];
-		if (newSum < target) {
-			dfs(combination, newSum,  index, candidates, target);
-		}
-		if (newSum == target) {
-			combination.add(index);
-			combinations.add(combination);
+		if (sum == target) {
+			combinations.add(new ArrayList<>(combination));
 			return;
-
 		}
-		dfs(combination, sum, index + 1, candidates, target);
+		for (int i=index; i<candidates.length; i++) {
+			combination.add(candidates[i]);
+			dfs(combination, sum + candidates[i], i, candidates, target);
+			combination.remove(combination.size() - 1);
+		}
 	}
 
 	@Test
