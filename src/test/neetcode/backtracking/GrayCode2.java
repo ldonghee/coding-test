@@ -2,6 +2,7 @@ package test.neetcode.backtracking;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,23 @@ import org.junit.jupiter.api.Test;
  */
 public class GrayCode2 {
 	public List<Integer> grayCode(int n) {
-		return null;
+		List<Integer> result = new ArrayList<>();
+		result.add(0);
+		dfs(result, n);
+		return result;
+	}
+
+	private void dfs(List<Integer> result, int n) {
+		if (n == 0) {
+			return;
+		}
+
+		int size = result.size();
+		for (int i = size - 1; i >= 0; i--) {
+			result.add(result.get(i) ^ (1 << (n - 1)));
+		}
+
+		dfs(result, n - 1);
 	}
 
 	@Test
