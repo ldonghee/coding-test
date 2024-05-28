@@ -2,7 +2,11 @@ package test.neetcode.backtracking;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -12,8 +16,37 @@ import org.junit.jupiter.api.Test;
  * https://leetcode.com/problems/permutations-ii/
  */
 public class PermutationsII {
+	List<List<Integer>> answers = new ArrayList<>();
+	Set<String> uniqueAnswers = new HashSet<>();
+
 	public List<List<Integer>> permuteUnique(int[] nums) {
-		return null;
+		boolean[] visited = new boolean[nums.length];
+		dfs(nums, visited, new ArrayList<>());
+		return answers;
+	}
+
+	public void dfs(int[] nums, boolean[] visited, List<Integer> combinations) {
+		if (combinations.size() == nums.length) {
+			String collect = combinations.stream()
+				.map(n -> String.valueOf(n))
+				.collect(Collectors.joining());
+			if (!uniqueAnswers.contains(collect)) {
+				uniqueAnswers.add(collect);
+				answers.add(new ArrayList<>(combinations));
+			}
+			return;
+		}
+
+		for (int i = 0; i < nums.length; i++) {
+			if (visited[i])
+				continue;
+
+			combinations.add(nums[i]);
+			visited[i] = true;
+			dfs(nums, visited, combinations);
+			combinations.remove(combinations.size() - 1);
+			visited[i] = false;
+		}
 	}
 
 	@Test
