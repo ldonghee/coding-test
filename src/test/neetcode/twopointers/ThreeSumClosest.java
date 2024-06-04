@@ -15,36 +15,30 @@ import org.junit.jupiter.api.Test;
  */
 public class ThreeSumClosest {
 	public int threeSumClosest(int[] nums, int target) {
-		List<Integer> numList = Arrays.stream(nums)
-			.boxed()
-			.collect(Collectors.toList());
-		Collections.sort(numList);
+		Arrays.sort(nums);
 
-		int left = 0;
-		int right = numList.size() - 1;
-		int closet = 0;
-		while(left < right - 1) {
-			int sum = numList.get(left) + numList.get(right);
-			if (sum < target) {
-				sum += numList.get(right - 1);
-			} else {
-				sum += numList.get(left + 1);
-			}
+		int closet = nums[0] + nums[1] + nums[nums.length-1];
 
-			if (target - sum == 0) {
-				closet = sum;
-				break;
-			}
+		for (int i=0; i<nums.length-2; i++) {
+			int left = i+1;
+			int right = nums.length - 1;
+			int num = nums[i];
 
-			if ((target - closet > target - sum) || (left == 0 && right == numList.size() -1)) {
-				closet = sum;
-			}
+			while (left < right) {
+				int sum = nums[left] + nums[right] + num;
 
-			if (sum < target) {
-				left++;
-				continue;
+				if (sum > target) {
+					right--;
+				} else if(sum < target) {
+					left++;
+				} else {
+					return target;
+				}
+
+				if (Math.abs(sum - target) < Math.abs(closet - target)) {
+					closet = sum;
+				}
 			}
-			right--;
 		}
 
 		return closet;
