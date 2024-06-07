@@ -10,7 +10,46 @@ import org.junit.jupiter.api.Test;
  */
 public class LongestPalindromicSubstring {
 	public String longestPalindrome(String s) {
-		return "";
+
+		String answer = "";
+
+		int left = 0;
+		int right = s.length() - 1;
+
+		while (left <= right) {
+			String subStr = s.substring(left, right + 1);
+
+			if (answer.length() >= subStr.length()) {
+				left++;
+				right = s.length() - 1;
+				continue;
+			}
+
+			if (isPalidrome(subStr)) {
+				answer = subStr;
+				left++;
+				right = s.length() - 1;
+			} else {
+				right--;
+			}
+
+		}
+
+		return answer;
+	}
+
+	public boolean isPalidrome(String str) {
+		int left = 0;
+		int right = str.length() - 1;
+
+		while (left < right) {
+			if (str.charAt(left) != str.charAt(right)) {
+				return false;
+			}
+			left++;
+			right--;
+		}
+		return true;
 	}
 
 	@Test
