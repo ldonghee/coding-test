@@ -9,8 +9,22 @@ import org.junit.jupiter.api.Test;
  * https://leetcode.com/problems/target-sum/description/
  */
 public class TargetSum {
+	int count = 0;
 	public int findTargetSumWays(int[] nums, int target) {
-		return 0;
+		dfs(nums, target, 0, 0);
+		return count;
+	}
+
+	void dfs(int[] nums, int target, int depth, int sum) {
+		if (depth == nums.length) {
+			if (target == sum) {
+				count += 1;
+			}
+			return;
+		}
+
+		dfs(nums, target, depth+1, sum + nums[depth]);
+		dfs(nums, target, depth+1, sum - nums[depth]);
 	}
 
 	@Test
