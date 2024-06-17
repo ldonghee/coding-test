@@ -2,6 +2,8 @@ package test.neetcode.twopointers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,7 +12,28 @@ import org.junit.jupiter.api.Test;
  */
 public class TrappingRainWater {
 	public int trap(int[] height) {
-		return 0;
+		int answer = 0;
+
+		int max = Arrays.stream(height)
+						.max()
+						.getAsInt();
+		for (int i=0; i<height.length-1; i++) {
+			int first = i;
+
+			if (height[first] == max) {
+				continue;
+			}
+
+			for (int next=i+1; next<height.length; next++) {
+				if (height[next] >= height[first]) {
+					i = next - 1;
+					break;
+				}
+				answer += height[first] - height[next];
+			}
+		}
+
+		return answer;
 	}
 
 	@Test
