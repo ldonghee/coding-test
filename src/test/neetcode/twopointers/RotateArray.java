@@ -2,6 +2,10 @@ package test.neetcode.twopointers;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,7 +14,21 @@ import org.junit.jupiter.api.Test;
  */
 public class RotateArray {
 	public int[] rotate(int[] nums, int k) {
-		return null;
+		k = k % nums.length;
+		reverse(nums, 0, nums.length - 1);
+		reverse(nums, 0, k - 1);
+		reverse(nums, k, nums.length - 1);
+		return nums;
+	}
+
+	void reverse(int[] nums, int start, int end) {
+		while (start < end) {
+			int temp = nums[end];
+			nums[end] = nums[start];
+			nums[start] = temp;
+			start++;
+			end--;
+		}
 	}
 
 	@Test
@@ -30,4 +48,12 @@ public class RotateArray {
 		int[] actual = rotate(nums, k);
 		assertThat(expect).isEqualTo(actual);
 	}
-}
+
+	@Test
+	public void test03() {
+		int[] nums = {-1};
+		int k = 2;
+		int[] expect = {-1};
+		int[] actual = rotate(nums, k);
+		assertThat(expect).isEqualTo(actual);
+	}}
